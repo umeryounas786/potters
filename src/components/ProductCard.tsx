@@ -29,7 +29,7 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
 
   return (
     <li
-      className="text-[15px] box-border caret-transparent grow shrink-0 leading-[27px] max-w-[calc(50%_-_3px)] min-h-[auto] min-w-[auto] w-[calc(50%_-_3px)] md:text-base md:leading-[28.8px] md:max-w-[calc(25%_-_9px)] md:w-[calc(25%_-_9px)] opacity-0 animate-fade-in-up"
+      className="text-[15px] box-border caret-transparent shrink-0 leading-[27px] max-w-[calc(50%_-_6px)] min-h-[auto] min-w-[auto] w-[calc(50%_-_6px)] md:text-base md:leading-[28.8px] md:max-w-[calc(25%_-_9px)] md:w-[calc(25%_-_9px)] opacity-0 animate-fade-in-up"
       style={{ animationDelay: `${index * 80}ms`, animationFillMode: 'forwards' }}
     >
       <div className="relative h-full cursor-pointer" onClick={() => navigate(product.productHref)}>
