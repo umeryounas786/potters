@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.arraish.com)",
+      "Bash(node scraper.js --dry-run)",
+      "Bash(node scraper.js)",
+      "Bash(timeout 20 node -e \":*)",
+      "Bash(node -e \"const m = JSON.parse\\(require\\(''fs''\\).readFileSync\\(''src/assets/manifest.json'',''utf8''\\)\\); console.log\\(JSON.stringify\\(m.errors?.slice\\(0,5\\), null, 2\\)\\); console.log\\(''Summary:'', JSON.stringify\\(m.summary, null, 2\\)\\);\")",
+      "Bash(curl -I \"https://arraish.com/cdn/shop/files/Arraish_Product_Shots_8-min_3345d8b7-6f29-4d6d-9b57-61e27a6d8143.jpg?v=1706691880\")",
+      "Bash(curl -s \"https://arraish.com/collections/all.json?limit=3\")",
+      "Bash(curl -s -L \"https://arraish.com/collections/all.json?limit=2\" -o /tmp/arraish_test.json)",
+      "Read(//tmp/**)",
+      "Bash(curl -v \"https://arraish.com/\")",
+      "Bash(curl -I \"https://www.arraish.com/cdn/shop/files/Arraish_Product_Shots_8-min_3345d8b7-6f29-4d6d-9b57-61e27a6d8143.jpg?v=1706691880\")",
+      "Bash(curl -I \"https://arraish.com/cdn/shop/files/Arraish_Product_Shots_8-min_3345d8b7-6f29-4d6d-9b57-61e27a6d8143.jpg\")",
+      "Bash(curl -s \"https://www.arraish.com/products.json?limit=1\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); p=d[''''products''''][0]; print\\(p[''''title'''']\\); [print\\(img[''''src'''']\\) for img in p[''''images''''][:2]]\")",
+      "Bash(node -e \"let d=''''''''; process.stdin.on\\(''''data'''',c=>d+=c\\); process.stdin.on\\(''''end'''',\\(\\)=>{ const j=JSON.parse\\(d\\); const p=j.products[0]; console.log\\(p.title\\); p.images.slice\\(0,2\\).forEach\\(i=>console.log\\(i.src\\)\\); }\\);\")",
+      "Bash(curl -s -L \"https://www.arraish.com/products.json?limit=1\" -o /tmp/prod.json)",
+      "Bash(node -e \"const j=JSON.parse\\(require\\(''fs''\\).readFileSync\\(''/tmp/prod.json'',''utf8''\\)\\); const p=j.products[0]; console.log\\(p.title\\); p.images.slice\\(0,2\\).forEach\\(i=>console.log\\(i.src\\)\\);\")",
+      "Bash(node -e \":*)",
+      "Bash(curl -sL \"https://www.arraish.com/products/blue-felicity-round-platter-large.json\" -o /tmp/test_product.json)",
+      "Bash(curl -sL \"https://www.arraish.com/products/blue-felicity-round-platter-large.json\" -o \"C:/temp/test_product.json\")",
+      "Bash(curl -sL --max-time 15 \"https://www.arraish.com/products/blue-felicity-round-platter-large.json\")",
+      "Bash(\"d:/download/arraish/tmp/test.json\")",
+      "Bash(curl -sL --max-time 15 -A \"Mozilla/5.0\" \"https://www.arraish.com/products/blue-felicity-round-platter-large.json\" -w \"\\\\nHTTP_STATUS:%{http_code}\")",
+      "Bash(curl -sI --max-time 15 -A \"Mozilla/5.0\" \"https://www.arraish.com/products/blue-felicity-round-platter-large\")",
+      "Bash(curl -sL --max-time 15 -A \"Mozilla/5.0\" \"https://www.arraish.com/collections/plates-platters/products.json?limit=1\" -w \"\\\\nHTTP_STATUS:%{http_code}\")",
+      "Bash(node apply-manifest.js)"
+    ]
+  }
+}

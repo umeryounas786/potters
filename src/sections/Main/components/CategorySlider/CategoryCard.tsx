@@ -12,14 +12,9 @@ export type CategoryCardProps = {
 };
 
 export const CategoryCard = (props: CategoryCardProps) => {
-  const getHref = () => {
-    // Convert external URLs to internal anchors
-    return '#categories';
-  };
-
   return (
     <li
-      className={`text-[15px] box-content caret-transparent grow shrink-0 leading-[27px] max-w-full min-h-[auto] min-w-[35%] snap-start w-[calc(100%_-_36px)] py-[5px] md:text-base md:box-border md:leading-[28.8px] md:max-w-[calc(16.66%_-_10px)] md:min-w-[auto] md:w-[calc(16.66%_-_10px)] md:py-0 ${props.liClassName ?? ""}`.trim()}
+      className={`text-[15px] box-content caret-transparent grow shrink-0 leading-[27px] min-h-[auto] min-w-[200px] snap-start w-[75%] py-[5px] sm:box-border sm:max-w-[calc(50%_-_3px)] sm:min-w-[auto] sm:w-[calc(50%_-_3px)] sm:py-0 md:text-base md:leading-[28.8px] md:max-w-[calc(33.33%_-_8px)] md:w-[calc(33.33%_-_8px)] lg:max-w-[calc(16.66%_-_10px)] lg:w-[calc(16.66%_-_10px)] ${props.liClassName ?? ""}`.trim()}
       style={{ animationDelay: `${(props.index || 0) * 100}ms` }}
     >
       <div className="relative text-[15px] box-content caret-transparent h-full leading-[27px] md:text-base md:box-border md:leading-[28.8px]">
@@ -40,7 +35,7 @@ export const CategoryCard = (props: CategoryCardProps) => {
                 <div className="text-[15px] box-border caret-transparent hidden row-start-2 leading-[27px] px-2.5 py-[13px] md:text-base md:leading-[28.8px] md:py-[17px]">
                   <h3 className="text-neutral-800 text-[17.85px] box-border caret-transparent tracking-[0.63px] leading-[22.95px] md:text-[18.9px] md:leading-[24.3px]">
                     <a
-                      href={getHref()}
+                      href={props.href}
                       className="text-[17.85px] box-border caret-transparent block leading-[22.95px] md:text-[18.9px] md:leading-[24.3px] after:accent-auto after:box-border after:caret-transparent after:text-neutral-800 after:block after:text-[17.85px] after:not-italic after:normal-nums after:font-normal after:tracking-[0.63px] after:leading-[22.95px] after:list-outside after:list-none after:outline-offset-[3px] after:pointer-events-auto after:absolute after:text-left after:no-underline after:indent-[0px] after:normal-case after:visible after:z-[1] after:border-separate after:inset-0 after:font-maven_pro after:md:text-[18.9px] after:md:leading-[24.3px]"
                     >
                       {props.title}
@@ -64,7 +59,7 @@ export const CategoryCard = (props: CategoryCardProps) => {
                 <div className="text-[15px] box-border caret-transparent hidden row-start-2 leading-[27px] px-2.5 py-[13px] md:text-base md:leading-[28.8px] md:py-[17px]">
                   <h3 className="text-neutral-800 text-[17.85px] box-border caret-transparent tracking-[0.63px] leading-[22.95px] md:text-[18.9px] md:leading-[24.3px]">
                     <a
-                      href={getHref()}
+                      href={props.href}
                       className="text-[17.85px] box-border caret-transparent block leading-[22.95px] md:text-[18.9px] md:leading-[24.3px] after:accent-auto after:box-border after:caret-transparent after:text-neutral-800 after:block after:text-[17.85px] after:not-italic after:normal-nums after:font-normal after:tracking-[0.63px] after:leading-[22.95px] after:list-outside after:list-none after:outline-offset-[3px] after:pointer-events-auto after:absolute after:text-left after:no-underline after:indent-[0px] after:normal-case after:visible after:z-[1] after:border-separate after:inset-0 after:font-maven_pro after:md:text-[18.9px] after:md:leading-[24.3px]"
                     >
                       {props.title}
@@ -85,7 +80,7 @@ export const CategoryCard = (props: CategoryCardProps) => {
             <div className="text-[15px] box-border caret-transparent row-start-2 leading-[27px] min-h-[auto] min-w-[auto] px-2.5 py-[13px] md:text-base md:leading-[28.8px] md:py-[17px]">
               <h3 className="text-neutral-800 text-[17.85px] box-border caret-transparent tracking-[0.63px] leading-[22.95px] md:text-[18.9px] md:leading-[24.3px]">
                 <a
-                  href={getHref()}
+                  href={props.href}
                   className="text-[17.85px] box-border caret-transparent block leading-[22.95px] md:text-[18.9px] md:leading-[24.3px] transition-colors duration-200 hover:text-blue-950 after:accent-auto after:box-border after:caret-transparent after:text-neutral-800 after:block after:text-[17.85px] after:not-italic after:normal-nums after:font-normal after:tracking-[0.63px] after:leading-[22.95px] after:list-outside after:list-none after:outline-offset-[3px] after:pointer-events-auto after:absolute after:text-left after:no-underline after:indent-[0px] after:normal-case after:visible after:z-[1] after:border-separate after:inset-0 after:font-maven_pro after:md:text-[18.9px] after:md:leading-[24.3px]"
                 >
                   {props.title}

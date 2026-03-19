@@ -1,187 +1,122 @@
-import { useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+
+const VIDEOS = [
+  {
+    src: "https://www.arraish.com/cdn/shop/videos/c/vp/bee2a985218d4bd09b25d0ede19d3441/bee2a985218d4bd09b25d0ede19d3441.HD-720p-1.6Mbps-40375830.mp4?v=0",
+    poster: "https://c.animaapp.com/mmu1yta2SFboEj/assets/67.jpg",
+  },
+  {
+    src: "https://www.arraish.com/cdn/shop/videos/c/vp/d362d8f4909745f08ad76661562b828e/d362d8f4909745f08ad76661562b828e.HD-1080p-7.2Mbps-40363618.mp4?v=0",
+    poster: "https://c.animaapp.com/mmu1yta2SFboEj/assets/70.jpg",
+  },
+  {
+    src: "https://www.arraish.com/cdn/shop/videos/c/vp/c6593a13d9ab4ef4acb3f68a1affc207/c6593a13d9ab4ef4acb3f68a1affc207.HD-720p-1.6Mbps-40363636.mp4?v=0",
+    poster: "https://c.animaapp.com/mmu1yta2SFboEj/assets/53.jpg",
+  },
+  {
+    src: "https://www.arraish.com/cdn/shop/videos/c/vp/48e83c7fcfb84639a269d18a6d6506aa/48e83c7fcfb84639a269d18a6d6506aa.HD-1080p-2.5Mbps-40363646.mp4?v=0",
+    poster: "https://c.animaapp.com/mmu1yta2SFboEj/assets/72.jpg",
+  },
+];
 
 export const VideoSection = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const { ref, isVisible } = useScrollAnimation(0.2);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const { ref, isVisible } = useScrollAnimation(0.05);
 
-  const scrollSlider = (direction: 'left' | 'right') => {
-    if (!sliderRef.current) return;
-    const scrollAmount = 320;
-    sliderRef.current.scrollBy({
-      left: direction === 'right' ? scrollAmount : -scrollAmount,
-      behavior: 'smooth'
-    });
+  // Sync dots with native scroll so swipe gestures update the indicator
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const index = Math.round(el.scrollLeft / (el.scrollWidth / VIDEOS.length));
+      setActiveIndex(Math.min(Math.max(index, 0), VIDEOS.length - 1));
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const scrollToIndex = (index: number) => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const card = el.children[index] as HTMLElement;
+    if (!card) return;
+    // scrollIntoView respects scroll-padding, avoiding a hardcoded pixel offset
+    card.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    setActiveIndex(index);
   };
 
   return (
-    <section id="videos" className="relative text-[15px] box-border caret-transparent leading-[27px] mt-10 md:text-base md:leading-[28.8px] md:mt-[55px]">
-      <div className="text-[15px] bg-zinc-100 bg-cover box-border caret-transparent leading-[27px] bg-center mx-auto md:text-base md:leading-[28.8px]">
-        <div ref={ref} className="text-[15px] box-border caret-transparent leading-[27px] max-w-[1440px] mx-auto px-[15px] md:text-base md:leading-[28.8px]">
-          <div className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
-            <div className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
-              <div className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
-                <div className="relative text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
-                  {/* Navigation arrows */}
-                  <button
-                    onClick={() => scrollSlider('left')}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 hidden md:flex items-center justify-center"
-                    aria-label="Scroll left"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                  </button>
-                  <button
-                    onClick={() => scrollSlider('right')}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 hidden md:flex items-center justify-center"
-                    aria-label="Scroll right"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                  </button>
+    <section id="videos" className="py-16 md:py-20" >
+      <div ref={ref} className="max-w-[1200px] mx-auto">
 
-                  <div 
-                    ref={sliderRef}
-                    className="relative text-[15px] box-border caret-transparent leading-[27px] list-none z-[1] overflow-x-auto overflow-y-hidden mx-auto md:text-base md:leading-[28.8px] video-slider"
-                  >
-                    <div className={`relative text-[15px] caret-transparent flex h-full leading-[27px] w-max z-[1] md:text-base md:leading-[28.8px] gap-2.5 md:gap-[30px] ${isVisible ? 'stagger-children' : ''}`}>
-                      <div
-                        role="group"
-                        aria-label="1 / 4"
-                        className={`relative text-[15px] box-border caret-transparent shrink-0 h-full leading-[27px] min-h-[auto] min-w-[auto] w-[345px] md:text-base md:leading-[28.8px] md:w-[290px] ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
-                        style={{ animationDelay: '0ms' }}
-                      >
-                        <div className="relative text-[15px] box-border caret-transparent leading-[27px] pb-[166%] md:text-base md:leading-[28.8px]">
-                          <div className="absolute text-[15px] box-border caret-transparent leading-[27px] overflow-hidden rounded-lg inset-0 md:text-base md:leading-[28.8px] group">
-                            <div className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px] h-full">
-                              <video
-                                playsInline
-                                autoPlay
-                                loop
-                                muted
-                                preload="metadata"
-                                poster="https://c.animaapp.com/mmu1yta2SFboEj/assets/67.jpg"
-                                className="absolute text-[15px] box-border caret-transparent h-full leading-[27px] object-cover align-baseline w-full left-0 top-0 md:text-base md:leading-[28.8px] transition-transform duration-500 group-hover:scale-105"
-                              >
-                                <source
-                                  src="https://www.arraish.com/cdn/shop/videos/c/vp/bee2a985218d4bd09b25d0ede19d3441/bee2a985218d4bd09b25d0ede19d3441.HD-720p-1.6Mbps-40375830.mp4?v=0"
-                                  type="video/mp4"
-                                />
-                                <img
-                                  src="https://c.animaapp.com/mmu1yta2SFboEj/assets/67.jpg"
-                                  alt=""
-                                />
-                              </video>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        role="group"
-                        aria-label="2 / 4"
-                        className={`relative text-[15px] box-border caret-transparent shrink-0 h-full leading-[27px] min-h-[auto] min-w-[auto] w-[345px] md:text-base md:leading-[28.8px] md:w-[290px] ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
-                        style={{ animationDelay: '100ms' }}
-                      >
-                        <div className="relative text-[15px] box-border caret-transparent leading-[27px] pb-[166%] md:text-base md:leading-[28.8px]">
-                          <div className="absolute text-[15px] box-border caret-transparent leading-[27px] overflow-hidden rounded-lg inset-0 md:text-base md:leading-[28.8px] group">
-                            <div className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px] h-full">
-                              <video
-                                playsInline
-                                autoPlay
-                                loop
-                                muted
-                                preload="metadata"
-                                poster="https://c.animaapp.com/mmu1yta2SFboEj/assets/70.jpg"
-                                className="absolute text-[15px] box-border caret-transparent h-full leading-[27px] object-cover align-baseline w-full left-0 top-0 md:text-base md:leading-[28.8px] transition-transform duration-500 group-hover:scale-105"
-                              >
-                                <source
-                                  src="https://www.arraish.com/cdn/shop/videos/c/vp/d362d8f4909745f08ad76661562b828e/d362d8f4909745f08ad76661562b828e.HD-1080p-7.2Mbps-40363618.mp4?v=0"
-                                  type="video/mp4"
-                                />
-                                <img
-                                  src="https://c.animaapp.com/mmu1yta2SFboEj/assets/70.jpg"
-                                  alt=""
-                                />
-                              </video>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        role="group"
-                        aria-label="3 / 4"
-                        className={`relative text-[15px] box-border caret-transparent shrink-0 h-full leading-[27px] min-h-[auto] min-w-[auto] w-[345px] md:text-base md:leading-[28.8px] md:w-[290px] ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
-                        style={{ animationDelay: '200ms' }}
-                      >
-                        <div className="relative text-[15px] box-border caret-transparent leading-[27px] pb-[166%] md:text-base md:leading-[28.8px]">
-                          <div className="absolute text-[15px] box-border caret-transparent leading-[27px] overflow-hidden rounded-lg inset-0 md:text-base md:leading-[28.8px] group">
-                            <div className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px] h-full">
-                              <video
-                                playsInline
-                                autoPlay
-                                loop
-                                muted
-                                preload="metadata"
-                                poster="https://c.animaapp.com/mmu1yta2SFboEj/assets/53.jpg"
-                                className="absolute text-[15px] box-border caret-transparent h-full leading-[27px] object-cover align-baseline w-full left-0 top-0 md:text-base md:leading-[28.8px] transition-transform duration-500 group-hover:scale-105"
-                              >
-                                <source
-                                  src="https://www.arraish.com/cdn/shop/videos/c/vp/c6593a13d9ab4ef4acb3f68a1affc207/c6593a13d9ab4ef4acb3f68a1affc207.HD-720p-1.6Mbps-40363636.mp4?v=0"
-                                  type="video/mp4"
-                                />
-                                <img
-                                  src="https://c.animaapp.com/mmu1yta2SFboEj/assets/53.jpg"
-                                  alt=""
-                                />
-                              </video>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        role="group"
-                        aria-label="4 / 4"
-                        className={`relative text-[15px] box-border caret-transparent shrink-0 h-full leading-[27px] min-h-[auto] min-w-[auto] w-[345px] md:text-base md:leading-[28.8px] md:w-[290px] ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
-                        style={{ animationDelay: '300ms' }}
-                      >
-                        <div className="relative text-[15px] box-border caret-transparent leading-[27px] pb-[166%] md:text-base md:leading-[28.8px]">
-                          <div className="absolute text-[15px] box-border caret-transparent leading-[27px] overflow-hidden rounded-lg inset-0 md:text-base md:leading-[28.8px] group">
-                            <div className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px] h-full">
-                              <video
-                                playsInline
-                                autoPlay
-                                loop
-                                muted
-                                preload="metadata"
-                                poster="https://c.animaapp.com/mmu1yta2SFboEj/assets/72.jpg"
-                                className="absolute text-[15px] box-border caret-transparent h-full leading-[27px] object-cover align-baseline w-full left-0 top-0 md:text-base md:leading-[28.8px] transition-transform duration-500 group-hover:scale-105"
-                              >
-                                <source
-                                  src="https://www.arraish.com/cdn/shop/videos/c/vp/48e83c7fcfb84639a269d18a6d6506aa/48e83c7fcfb84639a269d18a6d6506aa.HD-1080p-2.5Mbps-40363646.mp4?v=0"
-                                  type="video/mp4"
-                                />
-                                <img
-                                  src="https://c.animaapp.com/mmu1yta2SFboEj/assets/72.jpg"
-                                  alt=""
-                                />
-                              </video>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+        {/* Header */}
+        <div className={`text-center px-4 md:px-[50px] mb-12 md:mb-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          <p className="text-[11px] tracking-[5px] uppercase mb-3" >
+            Handcrafted in Multan
+          </p>
+          <h2 className="text-[26px] md:text-[34px] tracking-wide leading-tight" >
+            Watch Our Craft
+          </h2>
+          <div className="flex items-center justify-center gap-3 mt-5">
+            <div className="h-px w-16" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
+            <div className="w-2 h-2 rotate-45" style={{ backgroundColor: 'rgba(251,191,36,0.8)' }} />
+            <div className="h-px w-16" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
+          </div>
+        </div>
+
+        {/* Single unified layout — each video rendered once.
+            Mobile (<md): horizontal snap scroll.
+            Desktop (md+): staggered 4-column grid, no scroll. */}
+        <div
+          ref={sliderRef}
+          className="flex gap-4 md:gap-5 overflow-x-auto video-slider scroll-smooth snap-x snap-mandatory md:snap-none px-4 md:px-[50px] scroll-pl-4 md:scroll-pl-0 pb-1 md:pb-0 md:items-start"
+        >
+          {VIDEOS.map((video, i) => (
+            <div
+              key={i}
+              className={`shrink-0 w-[82vw] snap-start md:flex-1 md:w-auto rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-xl group transition-all duration-500 md:hover:scale-[1.03] md:hover:ring-amber-300/40 ${i % 2 === 1 ? 'md:mt-10' : 'md:mb-10'} ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+              style={{ animationDelay: `${i * 100}ms` }}
+            >
+              <div className="relative pb-[166%] bg-sky-900/60">
+                <video
+                  playsInline
+                  autoPlay
+                  loop
+                  muted
+                  preload="metadata"
+                  poster={video.poster}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                >
+                  <source src={video.src} type="video/mp4" />
+                  <img src={video.poster} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                </video>
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+                <div className="absolute top-3 left-3 w-7 h-7 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center ring-1 ring-white/20">
+                  <span className="text-white/80 text-[11px] font-medium">{i + 1}</span>
                 </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
-      </div>
-      <div className="absolute text-gray-200 text-[9px] box-border caret-transparent leading-[16.2px] right-2.5 bottom-2.5">
-        powered by{" "}
-        <b className="font-bold box-border caret-transparent">Tapita</b>
+
+        {/* Dot indicators — mobile only */}
+        <div className="flex justify-center gap-2 mt-6 md:hidden">
+          {VIDEOS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToIndex(i)}
+              className="h-1.5 rounded-full transition-all duration-300"
+              style={{
+                width: i === activeIndex ? '28px' : '6px',
+                backgroundColor: i === activeIndex ? '#fbbf24' : 'rgba(255,255,255,0.25)',
+              }}
+              aria-label={`Go to video ${i + 1}`}
+            />
+          ))}
+        </div>
+
       </div>
     </section>
   );
