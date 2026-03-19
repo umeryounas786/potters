@@ -1,7 +1,7 @@
 export const AnnouncementBar = () => {
   return (
     <div className="text-[15px] box-border caret-transparent leading-[27px] min-h-[auto] min-w-[auto] z-[4] md:text-base md:leading-[28.8px]">
-      <div className="text-white/80 text-[15px] bg-fixed bg-blue-950 box-border caret-transparent h-full leading-[27px] md:text-base md:leading-[28.8px]">
+      <div className="text-white/80 text-[15px] bg-blue-950 box-border caret-transparent h-full leading-[27px] md:text-base md:leading-[28.8px]">
         <div className="text-[15px] box-border caret-transparent grid [grid-template-areas:'announcements'] grid-cols-[1fr] leading-[27px] max-w-[1200px] mx-auto px-[30px] md:text-base md:leading-[28.8px] md:px-[50px]">
           <div
             role="region"

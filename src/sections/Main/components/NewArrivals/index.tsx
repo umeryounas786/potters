@@ -9,7 +9,7 @@ export const NewArrivals = () => {
 
   return (
     <section id="new-arrivals" className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
-      <div className="relative text-white/80 text-[15px] bg-fixed bg-blue-950 box-border caret-transparent leading-[27px] z-0 md:text-base md:leading-[28.8px]">
+      <div className="relative text-white/80 text-[15px] bg-blue-950 box-border caret-transparent leading-[27px] z-0 md:text-base md:leading-[28.8px]">
         <div ref={ref} className="text-[15px] box-border caret-transparent leading-[27px] pt-[27px] pb-[39px] md:text-base md:leading-[28.8px] md:pt-9 md:pb-[52px]">
           <div className="text-[15px] box-border caret-transparent leading-[27px] max-w-[1200px] mb-[25px] mx-auto px-[15px] md:text-base md:leading-[28.8px] md:px-[50px]">
             <h2 className={`text-white text-[21px] box-border caret-transparent tracking-[0.63px] leading-[27px] mb-5 md:text-[25.2px] md:leading-[32.4px] md:mb-[30px] ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>

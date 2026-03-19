@@ -1,7 +1,7 @@
 export const Footer = () => {
   return (
     <div className="text-[15px] box-border caret-transparent leading-[27px] min-h-[auto] min-w-[auto] md:text-base md:leading-[28.8px]">
-      <footer className="text-white/80 text-[15px] bg-fixed bg-blue-950 box-border caret-transparent leading-[27px] pt-[39px] pb-[30px] md:text-base md:leading-[28.8px] md:pt-[52px] md:pb-10">
+      <footer className="text-white/80 text-[15px] bg-blue-950 box-border caret-transparent leading-[27px] pt-[39px] pb-[30px] md:text-base md:leading-[28.8px] md:pt-[52px] md:pb-10">
         <div className="text-[15px] box-border caret-transparent leading-[27px] max-w-[1200px] mx-auto pb-[30px] px-10 md:text-base md:leading-[28.8px] md:pb-[50px] md:px-[50px]">
           <div className="text-[15px] box-border caret-transparent gap-x-1.5 block flex-wrap leading-[27px] list-none gap-y-1.5 mb-5 md:text-base md:gap-x-3 md:flex md:leading-[28.8px] md:gap-y-[60px] md:mb-0">
             <div className="text-[15px] box-border caret-transparent grow shrink-0 leading-[27px] max-w-full min-h-0 min-w-0 w-full mb-10 md:text-base md:leading-[28.8px] md:min-h-[auto] md:min-w-[auto] md:w-[calc(25%_-_9px)] md:mb-0">

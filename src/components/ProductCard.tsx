@@ -55,19 +55,19 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
               )}
             </div>
           </div>
-          {/* Details */}
-          <div className="box-border grid grow grid-rows-[max-content_minmax(0px,1fr)_max-content_auto] leading-[27px] w-full">
+          {/* Details — own white bg so text is readable on any parent background */}
+          <div className="bg-white rounded-b-lg box-border grid grow grid-rows-[max-content_minmax(0px,1fr)_max-content_auto] leading-[27px] w-full px-2">
             <div className="row-start-2 min-h-[auto] min-w-[auto] py-[13px]">
-              <p className="text-white text-[12.6px] tracking-[0.63px] leading-[16.2px] md:text-[13.65px] md:leading-[17.55px]">
+              <p className="text-neutral-800 text-[12.6px] tracking-[0.63px] leading-[16.2px] md:text-[13.65px] md:leading-[17.55px]">
                 <span className="block text-[12.6px] leading-[16.2px] md:text-[13.65px] md:leading-[17.55px] line-clamp-2">
                   {product.productName}
                 </span>
               </p>
-              <div className="text-white text-base tracking-[1px] leading-6 mt-[7px]">
+              <div className="text-neutral-800 text-base tracking-[1px] leading-6 mt-[7px]">
                 {product.isSale ? (
                   <div className="flex flex-wrap gap-1 items-center">
-                    <s className="text-white/60 text-[13px] line-through">{product.originalPrice}</s>
-                    <span className="text-green-400 font-medium">{product.currentPrice}</span>
+                    <s className="text-neutral-400 text-[13px] line-through">{product.originalPrice}</s>
+                    <span className="text-green-700 font-medium">{product.currentPrice}</span>
                   </div>
                 ) : (
                   <span>{product.currentPrice}</span>

@@ -17,7 +17,7 @@ export const SaleSection = () => {
 
   return (
     <section id="sale" className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
-      <div className="relative text-white/80 text-[15px] bg-fixed bg-blue-950 box-border caret-transparent leading-[27px] z-0 md:text-base md:leading-[28.8px]">
+      <div className="relative text-white/80 text-[15px] bg-blue-950 box-border caret-transparent leading-[27px] z-0 md:text-base md:leading-[28.8px]">
         {/* Header banner */}
         <div className="relative overflow-hidden bg-gradient-to-r from-red-700 via-red-600 to-rose-600 py-6 px-4 text-center">
           <div className="absolute inset-0 opacity-10">

@@ -35,7 +35,7 @@ export const CATEGORIES: Category[] = [
   {
     title: "Bowls",
     slug: "bowls",
-    imageSrc: "/assets/images/categories/DC6527A9-AC61-44B0-B6FB-E21BDCB1F8C3.jpg",
+    imageSrc: "/assets/images/bowls/DC6527A9-AC61-44B0-B6FB-E21BDCB1F8C3.jpg",
     imageAlt: "Multani Blue Pottery Ceramic Bowls",
     description: "Handcrafted Ceramic Bowls for Every Meal. Bring charm to your table with our stunning range of bowls.",
     href: "/collections/bowls",
@@ -43,7 +43,7 @@ export const CATEGORIES: Category[] = [
   {
     title: "Serving Dishes",
     slug: "serving-dishes",
-    imageSrc: "/assets/images/categories/FC425261-121D-4E83-B81F-8F249DE6262B.jpg",
+    imageSrc: "/assets/images/serving-dishes/ceramics-blue-felicity-flat-dish-28259862872146.jpg",
     imageAlt: "Blue Pottery Serving Dishes",
     description: "Serving Dishes That Add Warmth to Every Meal. Present your meals beautifully with our artisan serving collection.",
     href: "/collections/serving-dishes",

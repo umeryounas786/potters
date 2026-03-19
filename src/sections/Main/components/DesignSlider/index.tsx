@@ -11,7 +11,7 @@ export const DesignSlider = () => {
 
   return (
     <section id="designs" className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
-      <div className="text-white/80 text-[15px] bg-fixed bg-blue-950 box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
+      <div className="text-white/80 text-[15px] bg-blue-950 box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
         <div ref={ref} className="relative text-[15px] box-border caret-transparent leading-[27px] max-w-[1200px] z-0 mx-auto pt-9 pb-[45px] px-0 md:text-base md:leading-[28.8px] md:pt-12 md:pb-[60px] md:px-[50px]">
           <div className={`text-[15px] items-end box-border caret-transparent gap-x-2.5 flex flex-wrap justify-between leading-[27px] gap-y-2.5 mb-[30px] px-[15px] md:text-base md:items-center md:leading-[28.8px] md:px-0 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <h2 className="text-white text-[21px] box-border caret-transparent tracking-[0.63px] leading-[27px] min-h-[auto] min-w-[auto] md:text-[25.2px] md:leading-[32.4px]">

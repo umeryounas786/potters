@@ -37,7 +37,7 @@ export const CategorySlider = () => {
 
   return (
     <section id="categories" className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
-      <div className="text-zinc-100/80 text-[15px] bg-fixed bg-sky-950 box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
+      <div className="text-zinc-100/80 text-[15px] bg-sky-950 box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px]">
         <div ref={ref} className="relative text-[15px] box-border caret-transparent leading-[27px] max-w-[1200px] z-0 mx-auto px-0 py-9 md:text-base md:leading-[28.8px] md:px-[50px] md:py-12">
           <div className={`text-[15px] items-end box-border caret-transparent gap-x-2.5 flex flex-wrap justify-between leading-[27px] gap-y-2.5 mb-[30px] px-[15px] md:text-base md:items-center md:leading-[28.8px] md:px-0 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <h2 className="text-zinc-100 text-[21px] box-border caret-transparent tracking-[0.63px] leading-[27px] min-h-[auto] min-w-[auto] md:text-[25.2px] md:leading-[32.4px]">
@@ -48,7 +48,7 @@ export const CategorySlider = () => {
             </a>
           </div>
           <div className="relative text-[15px] box-border caret-transparent block leading-[27px] md:text-base md:leading-[28.8px]">
-            <ul ref={sliderRef} role="list" className={`relative text-[15px] box-border caret-transparent gap-x-1.5 flex flex-nowrap leading-[27px] list-none gap-y-1.5 scroll-smooth w-full overflow-auto mb-2.5 pl-0 scroll-pl-[15px] sm:static sm:flex-wrap sm:scroll-auto sm:snap-none sm:w-auto sm:overflow-visible sm:mb-0 sm:scroll-pl-[auto] sm:px-[15px] md:text-base md:gap-x-3 md:leading-[28.8px] md:gap-y-3 md:px-0 video-slider ${isVisible ? 'stagger-children' : ''}`}>
+            <ul ref={sliderRef} role="list" className={`relative text-[15px] box-border caret-transparent gap-x-1.5 flex flex-nowrap leading-[27px] list-none gap-y-1.5 scroll-smooth snap-x snap-mandatory w-full overflow-x-auto mb-2.5 pl-0 scroll-pl-[15px] sm:static sm:flex-wrap sm:scroll-auto sm:snap-none sm:w-auto sm:overflow-visible sm:mb-0 sm:scroll-pl-[auto] sm:px-[15px] md:text-base md:gap-x-3 md:leading-[28.8px] md:gap-y-3 md:px-0 video-slider ${isVisible ? 'stagger-children' : ''}`}>
               {CATEGORIES.map((cat, i) => (
                 <CategoryCard key={i} liClassName={i === 0 ? "ml-[15px] sm:ml-0" : ""} imageSrc={cat.imageSrc} imageAlt={cat.imageAlt} imageClassName={IMAGE_CLASS_MAP[cat.title] ?? "aspect-[auto_3024_/_3024]"} title={cat.title} href={cat.href} description={cat.description} descriptionIconSrc={cat.description ? ICON_MAP.descIcon : undefined} titleIconSrc={cat.title === "Table Decoration" ? ICON_MAP.tableIcon : ICON_MAP.titleIcon} index={i} />
               ))}

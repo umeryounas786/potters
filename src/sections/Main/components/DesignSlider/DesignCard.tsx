@@ -16,13 +16,13 @@ export const DesignCard = (props: DesignCardProps) => {
   const navigate = useNavigate();
   return (
     <li
-      className="text-[15px] box-border caret-transparent grow shrink-0 leading-[27px] max-w-full min-h-[auto] min-w-[auto] w-full md:text-base md:leading-[28.8px] md:max-w-[calc(16.66%_-_10px)] md:w-[calc(16.66%_-_10px)] opacity-0 animate-fade-in-up"
+      className="text-[15px] box-border caret-transparent grow shrink-0 leading-[27px] min-h-[auto] min-w-[auto] w-[calc(50%_-_3px)] max-w-[calc(50%_-_3px)] sm:w-[calc(33.33%_-_8px)] sm:max-w-[calc(33.33%_-_8px)] md:text-base md:leading-[28.8px] md:w-[calc(25%_-_9px)] md:max-w-[calc(25%_-_9px)] lg:w-[calc(16.66%_-_10px)] lg:max-w-[calc(16.66%_-_10px)] opacity-0 animate-fade-in-up"
       style={{ animationDelay: `${(props.index || 0) * 100}ms`, animationFillMode: 'forwards' }}
     >
       <div className={`relative text-[15px] box-border caret-transparent h-full leading-[27px] md:text-base md:leading-[28.8px] ${props.comingSoon ? 'opacity-60' : 'cursor-pointer'}`}
         onClick={() => !props.comingSoon && navigate(props.href)}
       >
-        <div className="relative text-neutral-800/80 text-[15px] bg-fixed bg-amber-50 box-border caret-transparent flex flex-col h-full leading-[27px] text-left rounded-lg md:text-base md:leading-[28.8px] card-hover after:absolute after:w-full after:h-full after:z-[-1] after:rounded-lg after:left-0 after:top-0 after:shadow-[rgba(0,17,40,0)_0px_4px_5px_0px] after:transition-shadow after:duration-300">
+        <div className="relative text-neutral-800/80 text-[15px] bg-amber-50 box-border caret-transparent flex flex-col h-full leading-[27px] text-left rounded-lg md:text-base md:leading-[28.8px] card-hover after:absolute after:w-full after:h-full after:z-[-1] after:rounded-lg after:left-0 after:top-0 after:shadow-[rgba(0,17,40,0)_0px_4px_5px_0px] after:transition-shadow after:duration-300">
           <div className="relative text-[15px] items-stretch box-border caret-transparent flex leading-[27px] min-h-[auto] min-w-[auto] w-full md:text-base md:leading-[28.8px] before:block before:h-0 before:w-0 before:pb-[100%]">
             <div className="absolute text-[15px] box-border caret-transparent leading-[27px] w-full z-0 overflow-hidden rounded-t-lg inset-y-0 md:text-base md:leading-[28.8px] img-hover-zoom">
               <div className="absolute text-[15px] box-border caret-transparent leading-[27px] w-full overflow-hidden inset-y-0 md:text-base md:leading-[28.8px]">
