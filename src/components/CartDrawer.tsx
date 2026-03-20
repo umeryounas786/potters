@@ -7,11 +7,11 @@ export const CartDrawer = () => {
     <>
       {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+        className={`fixed inset-0 bg-black/50 z-[60] transition-opacity duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
         onClick={() => setIsOpen(false)}
       />
       {/* Drawer */}
-      <div className={`fixed top-0 right-0 h-full w-full max-w-sm bg-amber-50 z-50 shadow-2xl flex flex-col transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-0 right-0 h-full w-full max-w-sm bg-amber-50 z-[70] shadow-2xl flex flex-col transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex items-center justify-between p-5 border-b border-neutral-200">
           <h2 className="text-blue-950 font-bold text-lg tracking-wide">Your Cart ({totalItems})</h2>
           <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-neutral-100 rounded-full transition-colors">
