@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TABLEWARE_SUBCATEGORIES, DECOR_SUBCATEGORIES, DESIGN_FAMILY } from '@/data/categories';
 
@@ -11,7 +11,17 @@ export type NavItemProps = {
 
 export const NavItem = (props: NavItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navigate = useNavigate();
+
+  const handleMouseEnter = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimer.current = setTimeout(() => setIsOpen(false), 120);
+  };
 
   const getHref = () => {
     if (props.href) {
@@ -38,8 +48,8 @@ export const NavItem = (props: NavItemProps) => {
       {props.hasDropdown ? (
         <div
           className="text-[15px] box-border caret-transparent leading-[27px] md:text-base md:leading-[28.8px] relative"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <button
             onClick={() => props.label === 'Tableware' ? navigate('/collections/plates-platters') : props.label === 'Decor' ? navigate('/collections/vases') : navigate('/collections/blue-felicity')}
@@ -57,7 +67,7 @@ export const NavItem = (props: NavItemProps) => {
           </button>
 
           {isOpen && (
-            <div className="absolute top-full left-0 z-50 bg-amber-50 border border-neutral-200 shadow-xl rounded-b-lg overflow-hidden w-64">
+            <div className="absolute top-full left-0 z-50 bg-amber-50 border border-neutral-200 shadow-xl rounded-b-lg overflow-hidden w-64 -mt-px">
               <ul className="py-2">
                 {dropdownItems.map((item: any) => (
                   <li key={item.label}>
