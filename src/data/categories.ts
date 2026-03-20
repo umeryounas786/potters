@@ -67,7 +67,7 @@ export const TABLEWARE_SUBCATEGORIES = [
   { label: "Blue Pottery",                slug: "blue-pottery",                count: null, priceRange: null },
   { label: "Karahi Handies & Cover Pots", slug: "ceramic-blue-pottery-karahies", count: 19, priceRange: "Rs. 2,499 – 4,999" },
   { label: "Pottery Jars",                slug: "pottery-jars",                count: 22, priceRange: "Rs. 1,499 – 3,499" },
-  { label: "Tea Mugs",                    slug: "tea-mugs",                    count: 8,  priceRange: "Rs. 1,199 – 4,499" },
+  { label: "Tea Mugs",                    slug: "tea-mugs",                    count: 8,  priceRange: "Rs. 1,199 – 1,999" },
   { label: "Tea Coasters",                slug: "tea-coasters",                count: 3,  priceRange: "Rs. 1,999" },
 ];
 

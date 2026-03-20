@@ -26,7 +26,13 @@
       "Bash(curl -sL --max-time 15 -A \"Mozilla/5.0\" \"https://www.arraish.com/products/blue-felicity-round-platter-large.json\" -w \"\\\\nHTTP_STATUS:%{http_code}\")",
       "Bash(curl -sI --max-time 15 -A \"Mozilla/5.0\" \"https://www.arraish.com/products/blue-felicity-round-platter-large\")",
       "Bash(curl -sL --max-time 15 -A \"Mozilla/5.0\" \"https://www.arraish.com/collections/plates-platters/products.json?limit=1\" -w \"\\\\nHTTP_STATUS:%{http_code}\")",
-      "Bash(node apply-manifest.js)"
+      "Bash(node apply-manifest.js)",
+      "Bash(ls -1 /d/download/arraish/src/**/*.tsx)",
+      "Bash(ls -1 /d/download/arraish/src/**/*.ts)",
+      "Bash(curl -s \"https://www.arraish.com/collections/table-decoration\" -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\")",
+      "Bash(cp -v \"/d/download/arraish/src/assets/images/tea-sets/\"* \"/d/download/arraish/static/assets/images/tea-sets/\")",
+      "Bash(cp -v \"/d/download/arraish/src/assets/images/table-decoration/\"* \"/d/download/arraish/static/assets/images/table-decoration/\")",
+      "Bash(curl -s \"https://www.arraish.com/collections/tea-mugs\")"
     ]
   }
 }

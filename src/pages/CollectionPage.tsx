@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ProductCard } from '@/components/ProductCard';
-import { ALL_PRODUCTS, DINNER_SETS, TEA_SETS, PLATES_PLATTERS, BOWLS, SERVING_DISHES, KARAHIS, VASES, PLANTERS, POTTERY_JARS, LAMPS, TABLE_DECOR } from '@/data/products';
+import { ALL_PRODUCTS, DINNER_SETS, TEA_SETS, TEA_MUGS, TEA_COASTERS, PLATES_PLATTERS, BOWLS, SERVING_DISHES, KARAHIS, VASES, PLANTERS, POTTERY_JARS, LAMPS, TABLE_DECOR } from '@/data/products';
 import { CATEGORIES, DESIGN_FAMILY, TABLEWARE_SUBCATEGORIES, DECOR_SUBCATEGORIES } from '@/data/categories';
 import { useState } from 'react';
 
@@ -9,6 +9,8 @@ import { useState } from 'react';
 const COLLECTION_MAP: Record<string, { label: string; products: typeof ALL_PRODUCTS }> = {
   "dinner-sets":                      { label: "Dinner Sets",                    products: DINNER_SETS },
   "tea-sets-blue-pottery":            { label: "Tea Sets",                       products: TEA_SETS },
+  "tea-mugs":                         { label: "Tea Mugs",                       products: TEA_MUGS },
+  "tea-coasters":                     { label: "Tea Coasters",                   products: TEA_COASTERS },
   "plates-platters":                  { label: "Plates & Platters",              products: PLATES_PLATTERS },
   "bowls":                            { label: "Bowls",                          products: BOWLS },
   "serving-dishes":                   { label: "Serving Dishes",                 products: SERVING_DISHES },
